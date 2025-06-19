@@ -1,0 +1,13 @@
+services:
+  litellm:
+    environment:
+      VIRTUAL_PORT: 4000
+      VIRTUAL_HOST: ${LITELLM_HOST}
+      LETSENCRYPT_HOST: ${LITELLM_HOST}
+      LETSENCRYPT_EMAIL: ${LITELLM_EMAIL}
+    networks:
+      - cert-network
+
+networks:
+  cert-network:
+    external: true
