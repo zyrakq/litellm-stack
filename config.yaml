@@ -65,6 +65,36 @@ model_list:
       supports_function_calling: true
       supports_assistant_prefill: true
       supports_computer_use: false
+  - model_name: minimax/minimax-m1
+    litellm_params: 
+      model: openrouter/minimax/minimax-m1
+      api_key: "os.environ/OPENROUTER_API_KEY"
+      web_search_options: {}
+    model_info:
+      max_input_tokens: 1000000
+      max_output_tokens: 40000
+      input_cost_per_token: 0.0000003
+      output_cost_per_token: 0.00000165
+      supports_vision: true
+      supports_web_search: true
+      supports_function_calling: true
+      supports_assistant_prefill: true
+      supports_computer_use: false
+  - model_name: minimax/minimax-m1-online
+    litellm_params: 
+      model: openrouter/minimax/minimax-m1:online
+      api_key: "os.environ/OPENROUTER_API_KEY"
+      web_search_options: {}
+    model_info:
+      max_input_tokens: 1000000
+      max_output_tokens: 40000
+      input_cost_per_token: 0.0000003
+      output_cost_per_token: 0.00000165
+      supports_vision: true
+      supports_web_search: true
+      supports_function_calling: true
+      supports_assistant_prefill: true
+      supports_computer_use: false
   # - model_name: model_name
   #   litellm_params: 
   #     thinking: { "type": "enabled", "budget_tokens": 2048 }
