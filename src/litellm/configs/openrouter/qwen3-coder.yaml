@@ -1,0 +1,37 @@
+model_list:
+  - model_name: qwen/qwen3-coder
+    litellm_params: 
+      model: openrouter/qwen/qwen3-coder:exacto:nitro
+      api_key: "os.environ/OPENROUTER_API_KEY"
+      web_search_options: {}
+    model_info:
+      max_input_tokens: 131100
+      max_output_tokens: 131100
+      input_cost_per_token: 0.000002
+      output_cost_per_token: 0.000002
+      supports_vision: true
+      supports_web_search: true
+      supports_prompt_caching: true
+      cache_read_input_token_cost: 0
+      cache_creation_input_token_cost: 0
+      supports_function_calling: true
+      supports_assistant_prefill: true
+      supports_computer_use: false
+  - model_name: qwen/qwen3-coder-online
+    litellm_params: 
+      model: openrouter/qwen/qwen3-coder:online:exacto:nitro
+      api_key: "os.environ/OPENROUTER_API_KEY"
+      web_search_options: {}
+    model_info:
+      max_input_tokens: 131100
+      max_output_tokens: 131100
+      input_cost_per_token: 0.000002
+      output_cost_per_token: 0.000002
+      supports_vision: true
+      supports_web_search: true
+      supports_prompt_caching: true
+      cache_read_input_token_cost: 0
+      cache_creation_input_token_cost: 0
+      supports_function_calling: true
+      supports_assistant_prefill: true
+      supports_computer_use: false

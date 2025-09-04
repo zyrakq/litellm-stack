@@ -1,0 +1,9 @@
+# model_list:
+#   - model_name: model_name
+#     litellm_params: 
+#       thinking: { "type": "enabled", "budget_tokens": 2048 }
+#       merge_reasoning_content_in_choices: true
+#       drop_params: true
+#       additional_drop_params: ["reasoning_effort", "thinking"]
+#     model_info:
+#       supports_reasoning: true

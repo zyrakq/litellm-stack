@@ -1,0 +1,21 @@
+[build]
+extensions = ["openrouter"]
+
+[build.combos]
+"openrouter+step-ca-trust" = ["openrouter", "step-ca-trust"]
+
+[build.environments]
+available = ["devcontainer", "forwarding", "letsencrypt", "step-ca"]
+
+[build.environments.devcontainer]
+extensions = ["openrouter"]
+
+[build.environments.forwarding]
+extensions = ["openrouter"]
+
+[build.environments.letsencrypt]
+extensions = ["openrouter"]
+
+[build.environments.step-ca]
+combos = ["openrouter+step-ca-trust"]
+extensions = ["openrouter", "step-ca-trust"]

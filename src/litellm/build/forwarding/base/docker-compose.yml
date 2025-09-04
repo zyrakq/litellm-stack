@@ -1,0 +1,58 @@
+services:
+  litellm-db:
+    container_name: litellm-db
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - litellm-db:/var/lib/postgresql/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: 3
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    networks:
+      - litellm-network
+  litellm:
+    container_name: litellm
+    image: localhost/litellm:latest
+    restart: unless-stopped
+    environment:
+      LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY}
+      LITELLM_SALT_KEY: ${LITELLM_SALT_KEY}
+      UI_USERNAME: ${UI_USERNAME}
+      UI_PASSWORD: ${UI_PASSWORD}
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@litellm-db:5432/${POSTGRES_DB}"
+      STORE_MODEL_IN_DB: "True"
+    depends_on:
+      - litellm-db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: 3
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:4000/health/liveliness || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - litellm-network
+    ports:
+      - 4000:4000
+volumes:
+  litellm-db:
+    name: litellm-db
+networks:
+  litellm-network:
+    name: litellm-network
+    driver: bridge
