@@ -23,7 +23,7 @@ services:
       - litellm-network
   litellm:
     container_name: litellm
-    image: localhost/litellm:latest
+    image: ${IMAGE:-ghcr.io/berriai/litellm:main-stable}
     restart: unless-stopped
     environment:
       LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY}

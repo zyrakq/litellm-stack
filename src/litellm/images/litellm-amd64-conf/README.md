@@ -7,7 +7,7 @@ Custom Docker image for LiteLLM with dynamic configuration generation based on e
 Build the custom LiteLLM image:
 
 ```bash
-cd src/litellm/image
-docker build -t litellm .
-docker tag litellm localhost/litellm
+cd src/litellm/images/litellm-amd64-conf
+docker build -t litellm-amd64-conf .
+docker tag litellm-amd64-conf localhost/litellm:amd64-conf
 ```

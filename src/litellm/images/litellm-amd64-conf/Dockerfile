@@ -1,10 +1,8 @@
-FROM ghcr.io/berriai/litellm:main-stable
+FROM localhost/litellm:amd64
 
 WORKDIR /app
 
 COPY config.yaml .
-
-RUN chmod +x ./docker/entrypoint.sh
 
 EXPOSE 4000/tcp
 
